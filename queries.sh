@@ -17,7 +17,8 @@ echo -e "\nAverage number of goals in all games from the winning teams rounded t
 echo "$($PSQL "SELECT ROUND(AVG(winner_goals), 2) FROM games")"
 
 echo -e "\nAverage number of goals in all games from both teams:"
-echo "$($PSQL "SELECT (AVG(winner_goals)+AVG(opponent_goals)) FROM games")"
+# echo "$($PSQL "SELECT (AVG(winner_goals)+AVG(opponent_goals)) FROM games")"
+echo "$($PSQL "SELECT ROUND((AVG(winner_goals)+AVG(opponent_goals)), 16) FROM games")"
 # the above command is showing some question mark
 echo -e "\nMost goals scored in a single game by one team:"
 echo "$($PSQL "SELECT GREATEST(MAX(winner_goals), MAX(opponent_goals)) FROM games")"
